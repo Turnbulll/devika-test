@@ -157,6 +157,9 @@ importers:
       aws-lambda:
         specifier: 1.0.7
         version: 1.0.7
+      axios:
+        specifier: 1.7.7
+        version: 1.7.7
       compression:
         specifier: 1.7.4
         version: 1.7.4
