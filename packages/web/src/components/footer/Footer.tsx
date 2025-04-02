@@ -7,17 +7,17 @@ const Footer = (): JSX.Element => (
     <div className={styles.column}>
       <img src="/logo-white.svg" alt="logo" />
       <div className={styles.links}>
+        <Link to="/serach">Search</Link>
         <Link to="/about">About</Link>
       </div>
       <div className={styles.address}>
         Business Address
         <br />
-        Smith Street
+        P. Sherman, 42 Wallaby Way, Sydney
         <br />
-        1234 5678
+        (678) 999-8212
       </div>
     </div>
-    <div className={styles.column}>{/* Column for mailing list */}</div>
   </div>
 );
 

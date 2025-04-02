@@ -5,17 +5,14 @@ import styles from './Hero.module.scss';
 const Hero = (): JSX.Element => (
   <div className={styles.hero}>
     <div className={styles.content}>
-      <h1>Lorem ipsum</h1>
+      <h1>Unleash the Power of GIFs with Giphynator</h1>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut
-        nulla risus. Ut euismod, sapien ut rhoncus venenatis, metus magna congue
-        mi, sit amet efficitur augue purus vel mi. Suspendisse eu varius nisl.
-        Maecenas sapien massa, aliquet id lectus sed, vulputate molestie nunc.
+        Instantly search millions of trending GIFs powered by GIPHY’s Search API. Whether you're feeling funny, flirty, or just want to react — Giphynator has the perfect GIF for every moment.
       </p>
-      <Link to="/#">Button</Link>
+      <Link to="/search">Search now</Link>
     </div>
     <div className={styles.image}>
-      <img src="./placeholder.svg" alt="placeholder" />
+      <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzVoMzE3aG1pczc2bnNpd2dvbTZ2aHBra2xkM3N5d2l1bXo4ZGdpZCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/26n6WywJyh39n1pBu/giphy.gif" alt="Searching wiley coyote from looney toons" />
     </div>
   </div>
 );

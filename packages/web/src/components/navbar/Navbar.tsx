@@ -11,10 +11,15 @@ interface Route {
 
 const leftRoutes: Route[] = [
   {
+    label: 'Search',
+    path: '/search',
+    type: 'link',
+  },
+  {
     label: 'About',
     path: '/about',
     type: 'link',
-  },
+  }
 ];
 
 const Navbar = (): JSX.Element => {
