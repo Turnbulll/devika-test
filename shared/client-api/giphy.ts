@@ -1,7 +1,7 @@
 import { Giphy } from '@baseline/types/giphy';
 import { RequestHandler } from './request-handler';
 
-export const getGiphy = async (requestHandler: RequestHandler, giphyId: string): Promise<Giphy> => {
+export const getGiphy = async (requestHandler: RequestHandler): Promise<Giphy> => {
   const response = await requestHandler.request<Giphy>({
     method: 'GET',
     url: `giphy`,

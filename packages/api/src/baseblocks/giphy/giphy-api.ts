@@ -12,7 +12,7 @@ const app = createApp();
 // app.use(isAdmin); // All private endpoints require the user to be an admin
 export const handler = createAuthenticatedHandler(app);
 
-app.get('/giphy', [
+app.get('/giphy/search', [
   isAdmin,
   async (req: RequestContext, res: Response) => {
     try {
