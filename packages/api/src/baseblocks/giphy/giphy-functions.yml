@@ -4,10 +4,6 @@ ApiGiphy:
     - http:
         path: /giphy/{any+}
         method: ANY
-        authorizer: # https://www.serverless.com/framework/docs/providers/aws/events/apigateway#http-endpoints-with-aws_iam-authorizers
-          type: COGNITO_USER_POOLS
-          authorizerId:
-            Ref: ApiGatewayAuthorizer
         cors:
           origin: ${self:custom.apiCorsOrigin}
           headers:
@@ -21,10 +17,6 @@ ApiGiphy:
     - http:
         path: /giphy
         method: ANY
-        authorizer: # https://www.serverless.com/framework/docs/providers/aws/events/apigateway#http-endpoints-with-aws_iam-authorizers
-          type: COGNITO_USER_POOLS
-          authorizerId:
-            Ref: ApiGatewayAuthorizer
         cors:
           origin: ${self:custom.apiCorsOrigin}
           headers:
