@@ -77,3 +77,26 @@ export interface Giphy {
   title: string;
   alt_text: string;
 }
+
+
+export interface GiphySearchRequest {
+  query: string;
+  limit?: number;
+  offset?: number;
+  rating?: string;
+  lang?: string;
+}
+
+export interface GiphySearchResponse {
+  data: Giphy[];
+  pagination: {
+    total_count: number;
+    count: number;
+    offset: number;
+  };
+  meta: {
+    status: number;
+    msg: string;
+    response_id: string;
+  };
+}

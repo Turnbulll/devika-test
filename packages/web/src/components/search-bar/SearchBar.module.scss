@@ -1,18 +1,21 @@
 .search {
-  max-width: 400px;
-  margin: 0 auto;
-
-  &__input {
+    display: flex;
     width: 100%;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    border: 2px solid #ccc;
-    border-radius: 1.5rem;
-    outline: none;
-    transition: border-color 0.2s ease;
+    align-items: center;
+    justify-content: center;
 
-    &:focus {
-      border-color: #007bff;
+    &__input {
+        flex: 1;
+        max-width: 800px;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        border: 2px solid #ccc;
+        border-radius: 1rem;
+        outline: none;
+        transition: border-color 0.2s ease;
+
+        &:focus {
+        border-color: #007bff;
+        }
     }
-  }
 }

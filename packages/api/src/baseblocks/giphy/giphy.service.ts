@@ -1,27 +1,6 @@
 import axios from 'axios';
-import { Giphy } from '@baseline/types/giphy';
+import { Giphy, GiphySearchRequest, GiphySearchResponse } from '@baseline/types/giphy';
 
-export interface GiphySearchRequest {
-  query: string;
-  limit?: number;
-  offset?: number;
-  rating?: string;
-  lang?: string;
-}
-
-interface GiphySearchResponse {
-  data: Giphy[];
-  pagination: {
-    total_count: number;
-    count: number;
-    offset: number;
-  };
-  meta: {
-    status: number;
-    msg: string;
-    response_id: string;
-  };
-}
 
 class GiphyService {
   private readonly apiKey: string;

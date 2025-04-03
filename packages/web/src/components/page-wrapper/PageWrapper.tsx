@@ -1,7 +1,5 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import Footer from '../footer/Footer';
-import Navbar from '../navbar/Navbar';
 
 interface Props {
   children: JSX.Element;
@@ -16,9 +14,7 @@ const PageWrapper = (props: Props): JSX.Element => {
       <Helmet>
         <title>{title ? `${title} | Giphynator` : 'Giphynator'}</title>
       </Helmet>
-      <Navbar />
       {children}
-      <Footer />
     </>
   );
 };
