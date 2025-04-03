@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PageWrapper from '../components/page-wrapper/PageWrapper';
 import SearchBar from '../components/search-bar/SearchBar';
 import { useNavigate, useSearchParams } from 'react-router-dom';
@@ -13,6 +13,7 @@ const Search = (): JSX.Element => {
   const [results, setResults] = useState<Giphy[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const initialLoad = useRef(true);
 
   const query = searchParams.get('q') || '';
 
@@ -29,6 +30,7 @@ const Search = (): JSX.Element => {
     const fetchData = async () => {
       try {
         setLoading(true);
+        initialLoad.current = false;
         setError(null);
         const BASE_URL = process.env.REACT_APP_API_URL;
         const response = await axios.get(`${BASE_URL}giphy/search?query=${encodeURIComponent(query)}`);
@@ -47,11 +49,12 @@ const Search = (): JSX.Element => {
     <PageWrapper title="Home">
       <>
         <Title />
-        <SearchBar onSearch={handleSearch} placeholder="Search something..." />
+        <SearchBar onSearch={handleSearch} initalState={query} placeholder="🚀🆒🧊 Search for super cool GIF's 🧊🆒🚀" />
         <ImageGrid
           items={results}
           loading={loading}
           error={error}
+          initialLoad={initialLoad.current}
           emptyMessage="No results found" />
       </>
     </PageWrapper>

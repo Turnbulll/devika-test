@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Giphy } from "../../../../../shared/types/giphy";
 import styles from "./ImageGrid.module.scss";
 import LoadingSpinner from "../loading-spinner/LoadingSpinner";
@@ -7,10 +7,13 @@ interface ImageGridProps {
     items: Giphy[];
     error: string | null;
     loading: boolean;
+    initialLoad: boolean;
     emptyMessage?: string;
 }
-const ImageGrid = ({ items, error, loading, emptyMessage = "No items" }: ImageGridProps) => {
-
+const ImageGrid = ({ items, error, loading, initialLoad: intitalLoad, emptyMessage = "No items" }: ImageGridProps) => {
+    if (intitalLoad) {
+        return <p className={styles.center} >{"Search for your super cool GIF's"}</p>;
+    }
     if (loading) {
         return <div className={styles.center}><LoadingSpinner /></div>;
     }
@@ -20,6 +23,7 @@ const ImageGrid = ({ items, error, loading, emptyMessage = "No items" }: ImageGr
     if (items.length === 0) {
         return <p className={styles.center}>{emptyMessage}</p>;
     }
+
 
     return (
         <div className={styles.giphyGrid}>
