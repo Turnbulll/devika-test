@@ -36,7 +36,6 @@ class GiphyService {
 
   async search({query, limit = 25, offset = 0, rating = 'g', lang = 'en'}: GiphySearchRequest): Promise<Giphy[]> {
     try {
-
       const response = await axios.get<GiphySearchResponse>(`${this.baseUrl}/search`, {
         params: {
           api_key: this.apiKey,
@@ -47,7 +46,6 @@ class GiphyService {
           lang,
         },
       });
-
       return response.data.data;
     } catch (error) {
       console.error('Error fetching Giphy data:', error);
