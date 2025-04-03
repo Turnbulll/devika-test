@@ -5,6 +5,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Giphy } from '../../../../shared/types/giphy';
 import axios from 'axios';
 import ImageGrid from '../components/image-grid/ImageGrid';
+import Title from '../components/title/Title';
 
 const Search = (): JSX.Element => {
   const navigate = useNavigate();
@@ -12,20 +13,14 @@ const Search = (): JSX.Element => {
   const [results, setResults] = useState<Giphy[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [offset, setOffset] = useState(0);
-  const [hasMore, setHasMore] = useState(true);
 
   const query = searchParams.get('q') || '';
-  const LIMIT = 25;
-
 
   const handleSearch = (newQuery: string) => {
     const newParams = new URLSearchParams();
     newParams.set('q', newQuery);
     navigate(`?${newParams.toString()}`);
     setResults([]);
-    setOffset(0);
-    setHasMore(true);
   };
 
   useEffect(() => {
@@ -35,7 +30,8 @@ const Search = (): JSX.Element => {
       try {
         setLoading(true);
         setError(null);
-        const response = await axios.get(`http://localhost:4000/local/giphy/search?query=${encodeURIComponent(query)}`);
+        const BASE_URL = process.env.REACT_APP_API_URL;
+        const response = await axios.get(`${BASE_URL}giphy/search?query=${encodeURIComponent(query)}`);
         setResults(response.data);
       } catch (err: any) {
         setError(err.message || 'Failed to fetch');
@@ -50,6 +46,7 @@ const Search = (): JSX.Element => {
   return (
     <PageWrapper title="Home">
       <>
+        <Title />
         <SearchBar onSearch={handleSearch} placeholder="Search something..." />
         <ImageGrid
           items={results}

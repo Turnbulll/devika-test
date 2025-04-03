@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
@@ -14,7 +15,9 @@ const PageWrapper = (props: Props): JSX.Element => {
       <Helmet>
         <title>{title ? `${title} | Giphynator` : 'Giphynator'}</title>
       </Helmet>
-      {children}
+      <div className={clsx("full-width", "full-height")}>
+        {children}
+      </div>
     </>
   );
 };
