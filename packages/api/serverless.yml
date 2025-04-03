@@ -30,20 +30,6 @@ custom:
       ignore: >-
         scripts/**/* .build/**/* .dynamodb/**/* .serverless/**/* .esbuild/**/*
         node_modules/**/*
-  serverless-dynamodb:
-    stages:
-      - local
-    start:
-      port: 8000
-      inMemory: true
-      migrate: true
-      seed: true
-    seed:
-      local:
-        sources:
-          - table: ${env:APP_NAME}-${opt:stage}-admin
-            sources:
-              - ./src/baseblocks/admin/admin.seed.json
 
 package:
   individually: true
@@ -80,18 +66,6 @@ provider:
       statements:
         - Effect: Allow
           Action:
-            - dynamodb:Query
-            - dynamodb:Scan
-            - dynamodb:GetItem
-            - dynamodb:PutItem
-            - dynamodb:UpdateItem
-            - dynamodb:DeleteItem
-            - dynamodb:BatchGetItem
-          Resource:
-            - !Sub ${adminTable.Arn}
-            - !Sub ${adminTable.Arn}/index/*
-        - Effect: Allow
-          Action:
             - cognito-idp:AdminCreateUser
             - cognito-idp:AdminGetUser
             - cognito-idp:ListUsers
@@ -99,7 +73,5 @@ provider:
             - !Sub ${CognitoUserPool.Arn}
 resources:
   - ${file(./src/baseblocks/cognito/cognito-resources.yml)}
-  - ${file(./src/baseblocks/admin/admin-dynamodb.yml)}
 functions:
-  - ${file(./src/baseblocks/admin/admin-functions.yml)}
   - ${file(./src/baseblocks/giphy/giphy-functions.yml)}
